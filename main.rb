@@ -1,5 +1,5 @@
 messageWords = ".-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...".split("   ")
-dictionary = {
+$dictionary = {
   ".-" => "a",
   "-..." => "b",
   "-.-." => "c",
@@ -27,17 +27,17 @@ dictionary = {
   "-.--" => "y",
   "--.." => "z",
 }
-decoded =
-messageWords.map do |word|
-  word.split(" ").map do |letter|
-    dictionary[letter]
-  end.join
+
+def decodeLetter(letters)
+  $dictionary[letters].upcase
 end
-print(decoded)
 
-
-
-def decodeMorse(message, dictionary)
-  message.map { |word| word.split(" ").map { |letter| dictionary[letter] }.join }.join(" ")
+def decodeWord(word)
+  word.split(" ").map { |letter| decodeLetter(letter) }.join
 end
-puts decodeMorse(messageWords, dictionary)
+
+def decodePhrase(message)
+  message.map { |word| decodeWord(word) }.join(" ")
+end
+
+puts decodePhrase(messageWords)

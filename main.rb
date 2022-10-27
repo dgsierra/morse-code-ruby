@@ -34,3 +34,9 @@ messageWords.map do |word|
   end.join
 end
 print(decoded)
+
+
+def decodeMorse(message, dictionary)
+  message.map { |word| word.split(" ").map { |letter| dictionary[letter] }.join }.join(" ")
+end
+puts decodeMorse(messageWords, dictionary)

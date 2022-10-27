@@ -36,6 +36,7 @@ end
 print(decoded)
 
 
+
 def decodeMorse(message, dictionary)
   message.map { |word| word.split(" ").map { |letter| dictionary[letter] }.join }.join(" ")
 end
